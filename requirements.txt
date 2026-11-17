@@ -1,0 +1,3 @@
+# Python 3.14 / Windows x64. Prefer setup.cmd for verified project-local installation.
+# For an already-created environment: uv pip sync --require-hashes scripts/python-requirements.lock
+-r scripts/python-requirements.lock

@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "platform": "windows-x86_64",
+  "python": "3.14.0",
+  "aiDefault": "qwen3.5:4b",
+  "assets": {
+    "uv": {
+      "version": "0.13.8",
+      "url": "https://github.com/astral-sh/uv/releases/download/0.13.8/uv-x86_64-pc-windows-msvc.zip",
+      "sha256": "529e78a9cec6cd7e3e014f7ecd8bda0c113969d4ed0f2efeedb85c30943325b8",
+      "filename": "uv-x86_64-pc-windows-msvc.zip"
+    },
+    "lessmsi": {
+      "version": "v2.12.9",
+      "url": "https://github.com/activescott/lessmsi/releases/download/v2.12.9/lessmsi-v2.12.9.zip",
+      "sha256": "5b4e187e74b184ad3a63ccf06c3d17dae2b8c4b6c298a996dbd51a9f6db29d21",
+      "filename": "lessmsi-v2.12.9.zip"
+    },
+    "strata_installer": {
+      "version": "v0.2.13",
+      "url": "https://github.com/Niko1221/Strata/releases/download/v0.2.13/install.ps1",
+      "sha256": "322ad52bddc137893b6091f4e8ff989cd87ba968e063e5b08e43e167480343fc",
+      "filename": "install.ps1"
+    },
+    "node": {
+      "version": "v26.13.1",
+      "url": "https://nodejs.org/dist/v26.13.1/node-v26.13.1-win-x64.zip",
+      "sha256": "e2edda75bfb089654705cf65a13b58933bfd5f57148e8ebda916f58a2474f1f7",
+      "filename": "node-v26.13.1-win-x64.zip"
+    },
+    "java": {
+      "version": "21.0.13+9",
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jre_x64_windows_hotspot_21.0.13_9.zip",
+      "sha256": "2332c0b4cff6bed722da3567c91d5e47568bcba863fa4945d0a8d6fc76158628",
+      "filename": "OpenJDK21U-jre_x64_windows_hotspot_21.0.13_9.zip"
+    },
+    "libreoffice": {
+      "version": "26.8.3",
+      "url": "https://download.documentfoundation.org/libreoffice/stable/26.8.3/win/x86_64/LibreOffice_26.8.3_Win_x86-64.msi",
+      "fallbackUrls": [
+        "https://downloadarchive.documentfoundation.org/libreoffice/old/26.8.3.1/win/x86_64/LibreOffice_26.8.3.1_Win_x86-64.msi"
+      ],
+      "sha256": "0e6918c273eabbdbbd800ee0dacbbf130a14c13c2e4cec861b06dd59e015bf94",
+      "filename": "LibreOffice_26.8.3_Win_x86-64.msi"
+    },
+    "verapdf": {
+      "version": "1.30.4",
+      "url": "https://software.verapdf.org/releases/1.30/verapdf-greenfield-1.30.4-installer.zip",
+      "sha256": "04415ef3f149526a3048b9889723e81320ddf013bd891bcc7f0f297f3eadcc23",
+      "filename": "verapdf-1.30.4-installer.zip"
+    },
+    "ollama": {
+      "version": "v0.40.16",
+      "url": "https://github.com/ollama/ollama/releases/download/v0.40.16/ollama-windows-amd64.zip",
+      "sha256": "50fcf5ad54277f2fa5d173ebfc93bcb017adbc0c9ef2314daabc96ca9e6aa64e",
+      "filename": "ollama-windows-amd64.zip"
+    }
+  }
+}

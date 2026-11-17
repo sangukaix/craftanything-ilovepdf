@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+.captured-home.home { isolation: isolate; }
+.captured-home .img-card__footer svg { display: inline-block; }
+
+@media (max-width: 480px) {
+  .captured-home .tools__filter .tag {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 420px) {
+  .captured-home .tools__filter .tag:nth-child(4) { margin-left: 30px; }
+  .captured-home .tools__filter .tag:nth-child(5) { margin-right: 30px; }
+}

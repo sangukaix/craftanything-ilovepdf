@@ -1,0 +1,1 @@
+export default function Page(){return <section className="tool-content"><h1>휴대폰 사진으로 PDF 만들기</h1><div className="tool-work"><p>휴대폰에서 촬영한 JPG·PNG 사진을 이 PC로 옮겨 스캔 PDF를 만들 수 있습니다. PC 카메라도 연결해 사용할 수 있습니다. 현재 127.0.0.1 주소는 이 PC 전용이며 휴대폰 원격 업로드·QR 전송은 제공하지 않습니다.</p><a className="tool-run" href="/ko/scan-pdf/">사진 스캔</a></div></section>;}

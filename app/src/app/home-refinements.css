@@ -1,0 +1,5 @@
+/* Match the captured page's inline SVG baseline despite Tailwind's reset. */
+.captured-home .tools__item__icon svg{display:inline;vertical-align:baseline}
+.captured-home .img-card__footer svg{vertical-align:baseline}
+.captured-home .footer-main__nav img{display:inline-block}
+@media(max-width:480px){.captured-home .tools__filter .tag{padding-left:16px;padding-right:16px}}

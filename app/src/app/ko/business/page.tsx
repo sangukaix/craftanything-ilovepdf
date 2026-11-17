@@ -1,0 +1,1 @@
+export default function Page(){return <section className="tool-content"><h1>로컬 문서 업무</h1><div className="tool-work"><p>반복하는 PDF 작업은 내 워크플로에서 단계 설정을 저장해 다시 실행할 수 있습니다. 이 작업 공간은 클라우드 팀 계정이나 조직 관리 기능을 제공하지 않습니다.</p><a className="tool-run" href="/ko/user/workflows/">내 워크플로</a></div></section>;}

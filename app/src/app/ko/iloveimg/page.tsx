@@ -1,0 +1,1 @@
+export default function Page(){return <section className="tool-content"><h1>사진으로 PDF 작업하기</h1><div className="tool-work"><p>JPG 이미지를 PDF로 바꾸거나 스캔 도구에서 JPG·PNG·WEBP 사진의 회전·여백·명암을 조절할 수 있습니다. 별도의 이미지 편집 클라우드 계정과 연결되지는 않습니다.</p><a className="tool-run" href="/ko/scan-pdf/">사진 보정·스캔</a></div></section>;}

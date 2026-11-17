@@ -1,0 +1,2 @@
+# Compatibility entry point; the complete pinned dependency set is maintained here.
+-r python-requirements.lock

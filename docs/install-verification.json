@@ -1,0 +1,112 @@
+{
+  "date": "2026-11-17",
+  "scope": "Fresh source/dependencies on the same Windows x64 PC; not another hardware test",
+  "existingAiInstall": {
+    "profile": "Full",
+    "checks": [
+      {
+        "name": "compress/protect/unlock",
+        "passed": true,
+        "seconds": 0.054
+      },
+      {
+        "name": "editable Word and PowerPoint export",
+        "passed": true,
+        "seconds": 0.428
+      },
+      {
+        "name": "2/3-column document flow",
+        "passed": true,
+        "seconds": 0.678
+      },
+      {
+        "name": "account vault and replay-safe demo payment",
+        "passed": true,
+        "seconds": 0.344
+      },
+      {
+        "name": "DOCX/XLSX/PPTX to PDF",
+        "passed": true,
+        "seconds": 37.439
+      },
+      {
+        "name": "PDF/A2b with veraPDF validation",
+        "passed": true,
+        "seconds": 13.339
+      },
+      {
+        "name": "sandboxed HTML to PDF",
+        "passed": true,
+        "seconds": 3.411
+      },
+      {
+        "name": "actual local AI summary/translation",
+        "passed": true,
+        "seconds": 4.354
+      }
+    ]
+  },
+  "ollamaInstall": {
+    "profile": "Full",
+    "checks": [
+      {
+        "name": "compress/protect/unlock",
+        "passed": true,
+        "seconds": 0.057
+      },
+      {
+        "name": "editable Word and PowerPoint export",
+        "passed": true,
+        "seconds": 0.36
+      },
+      {
+        "name": "2/3-column document flow",
+        "passed": true,
+        "seconds": 0.767
+      },
+      {
+        "name": "account vault and replay-safe demo payment",
+        "passed": true,
+        "seconds": 0.292
+      },
+      {
+        "name": "DOCX/XLSX/PPTX to PDF",
+        "passed": true,
+        "seconds": 35.537
+      },
+      {
+        "name": "PDF/A2b with veraPDF validation",
+        "passed": true,
+        "seconds": 17.314
+      },
+      {
+        "name": "sandboxed HTML to PDF",
+        "passed": true,
+        "seconds": 2.255
+      },
+      {
+        "name": "actual local AI summary/translation",
+        "passed": true,
+        "seconds": 1.517
+      }
+    ]
+  },
+  "regression": {
+    "pythonPassed": 52,
+    "pythonSkipped": 0,
+    "clientGroupsPassed": 6,
+    "ollamaAiTestsPassed": 2
+  },
+  "routeAudit": {
+    "coreToolCount": 32,
+    "localLinksChecked": 87,
+    "sourceMissing": [],
+    "brokenLinks": []
+  },
+  "unverified": [
+    "Strata full model re-download",
+    "Physical camera",
+    "External cloud/live payment/email/certificate trust",
+    "Other operating systems"
+  ]
+}

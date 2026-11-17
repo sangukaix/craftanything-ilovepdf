@@ -1,0 +1,2 @@
+# Preserve source/resource bytes and SOURCE_MANIFEST hashes across Windows clones.
+* -text

@@ -1,0 +1,28 @@
+name: Windows document checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  document-tools:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned document engines and build (AI explicitly excluded)
+        shell: powershell
+        run: ./scripts/setup.ps1 -Profile Full -AiEngine None
+      - name: Run checks (two real AI tests are skipped)
+        shell: cmd
+        run: verify.cmd
+      - name: Upload synthetic install reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: document-install-checks
+          path: |
+            .local-data/doctor.json
+            .local-data/verification/result.json
+          if-no-files-found: ignore

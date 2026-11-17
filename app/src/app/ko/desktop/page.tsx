@@ -1,0 +1,1 @@
+export default function Page(){return <section className="tool-content"><h1>이 PC에서 PDF 작업하기</h1><div className="tool-work"><p>현재 브라우저에서 로컬 PDF 도구를 사용할 수 있습니다. 문서 처리 서비스가 켜져 있어야 하며, AI 요약·번역에는 로컬 Qwen도 필요합니다. 별도 유료 데스크톱 제품 설치나 구매는 제공하지 않습니다.</p><a className="tool-run" href="/ko/help/documentation/">사용 방법</a></div></section>;}
