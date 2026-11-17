@@ -22,10 +22,10 @@ def main():
   except urllib.error.HTTPError as response:return response.code,response.headers,response.read()
  def verify(name,fn):
   started=time.monotonic();fn();checks.append({'name':name,'passed':True,'seconds':round(time.monotonic()-started,3)});print('PASS '+name,flush=True)
- def gate():
-  assert request('/pdf-api/api/pdf/compress',{})[0]==401
-  assert request('/share/login',urllib.parse.urlencode({'code':state['password'],'next':'/'}).encode(),kind='application/x-www-form-urlencoded')[0]==200
- verify('HTTPS gate and secure cookie login',gate)
+ def public_page():
+  status,_,body=request('/')
+  assert status==200 and b'captured-home' in body and '/share/login' not in body.decode('utf-8')
+ verify('public project opens without a share password or cookie',public_page)
  def boundaries():
   assert request('/.env')[0]==404
   assert request('/%2e%2e/.local-data/share/session.json')[0] in {400,403,404}

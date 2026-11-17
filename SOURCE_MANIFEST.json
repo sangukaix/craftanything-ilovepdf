@@ -1347,11 +1347,6 @@
       "sha256": "6017eca5939cde1836e88e6d8cd27ae039246f206515ea4487bdfd0e3fb16e26"
     },
     {
-      "path": "app/src/app/add_pdf_page_number.tsx",
-      "bytes": 505,
-      "sha256": "6cf3462c614567ffbf98de7cbee1e100cfdee8f7d9c657b8473990182e029951"
-    },
-    {
       "path": "app/src/app/captured-home.css",
       "bytes": 266161,
       "sha256": "86d918612d0f9b2b839464ed4cd673df490aa3e444c504e42ce0795339128a49"
@@ -1362,44 +1357,9 @@
       "sha256": "831b2da1c79825ed21cf7fe58c8e04b09a5ba06aee41fc0cff870c588c731859"
     },
     {
-      "path": "app/src/app/compress_pdf.tsx",
-      "bytes": 501,
-      "sha256": "4166217e9bb3efb8b8c8a0a35dadf189af9ef1a45a7a657a02fd8a53ccdcf68c"
-    },
-    {
-      "path": "app/src/app/convert-pdf-to-pdfa.tsx",
-      "bytes": 543,
-      "sha256": "e56de06acd27078672a794faaa87ab6e5b8ec4456dad59c474d7d7ed61937192"
-    },
-    {
-      "path": "app/src/app/crop-pdf.tsx",
-      "bytes": 528,
-      "sha256": "54540ae08ebec656d22d85067e6eeec1db544a3f921977e2b46905d8151d08f2"
-    },
-    {
-      "path": "app/src/app/edit-pdf.tsx",
-      "bytes": 544,
-      "sha256": "4da079546e1b360446a4295ecb6ae7cf30789ec466c64874125b244185652f89"
-    },
-    {
-      "path": "app/src/app/excel_to_pdf.tsx",
-      "bytes": 453,
-      "sha256": "872441123ee1a0e7ed60a3fe5f4907576eca08ebf13d2cf12426b18e050d80f0"
-    },
-    {
       "path": "app/src/app/home-refinements.css",
       "bytes": 375,
       "sha256": "841c5df8b5b213f3da6ad86e2fc33eaa5a148384edbe59e76ee6ab9265e9842b"
-    },
-    {
-      "path": "app/src/app/html-to-pdf.tsx",
-      "bytes": 503,
-      "sha256": "32a408c6c83c837dac09c1554a06dc9c7d365424fbf363288d0ec299722e9cc6"
-    },
-    {
-      "path": "app/src/app/jpg_to_pdf.tsx",
-      "bytes": 458,
-      "sha256": "7c58350c41c17b6029cfc75ae8bcb905cb06422d091844f83fe3f1915dcfeb9b"
     },
     {
       "path": "app/src/app/ko/[...info]/page.tsx",
@@ -1772,74 +1732,14 @@
       "sha256": "7e21a9ce46d41551d900e57fd25d2830ff56e9ac79165fe33debf8b2f74a710b"
     },
     {
-      "path": "app/src/app/merge_pdf.tsx",
-      "bytes": 1102,
-      "sha256": "09363a04dedcfbe6c5f92f7f6b53dae9514010cec1dd0a7ad5bf52e39be91041"
-    },
-    {
       "path": "app/src/app/page.tsx",
       "bytes": 291,
       "sha256": "699224af7240e02c2f946b5b4593d2a25619f49f88d1665633cf03b2b1e81131"
     },
     {
-      "path": "app/src/app/page_test.tsx",
-      "bytes": 70,
-      "sha256": "01565bd4336d4fbd585871750a526c8573cf517878466920842d61780006b504"
-    },
-    {
-      "path": "app/src/app/pdf_add_watermark.tsx",
-      "bytes": 507,
-      "sha256": "5de545ea3950f9ddb69107c800c6166b572d09e0dbbf4bb8b921cc1d5b0a59ec"
-    },
-    {
-      "path": "app/src/app/pdf_to_excel.tsx",
-      "bytes": 481,
-      "sha256": "69281abe587031e136597559740bcb7fd62412252aa01ca58fcd99dfe1781bb0"
-    },
-    {
-      "path": "app/src/app/pdf_to_jpg.tsx",
-      "bytes": 485,
-      "sha256": "8508f290ca3b8b9c3f35ef49be91943ca0add99aa84726e512d0d367ecd7f6cd"
-    },
-    {
-      "path": "app/src/app/pdf_to_powerpoint.tsx",
-      "bytes": 488,
-      "sha256": "d1d47abd206420d643ed1d5a93e24cf155c103cfb55572893f09ecc9f3387f52"
-    },
-    {
-      "path": "app/src/app/pdf_to_word.tsx",
-      "bytes": 531,
-      "sha256": "442e76ec25d22b57af13f2298a0e9373504e065af79a8ee489cd50df79462449"
-    },
-    {
-      "path": "app/src/app/powerpoint_to_pdf.tsx",
-      "bytes": 466,
-      "sha256": "fad292ecf0930a9e30317461bf94b9ec63b4b00a8b315e83d12225abc06393a2"
-    },
-    {
-      "path": "app/src/app/rotate_pdf.tsx",
-      "bytes": 476,
-      "sha256": "731b591fc6d3a9c833e13cd73dd7a76acd280ba6384610c234aa73730adf78cf"
-    },
-    {
       "path": "app/src/app/site-global.css",
       "bytes": 472,
       "sha256": "c76fb3e34b15bca1f17a001c4dd0f1c3f61364345bc8ec0f4bdd69385dd9a812"
-    },
-    {
-      "path": "app/src/app/split_pdf.tsx",
-      "bytes": 521,
-      "sha256": "e3fe36377d67d59b1f7efcaaf686277451472194678f0d3a7a907f9f88c9a57b"
-    },
-    {
-      "path": "app/src/app/theme.ts",
-      "bytes": 879,
-      "sha256": "f829484acdf25bf56ad58ddea7c1d053eb2e0e9d505f084eef8960c07f475c4e"
-    },
-    {
-      "path": "app/src/app/word_to_pdf.tsx",
-      "bytes": 448,
-      "sha256": "aaf08270a8b1a922a96078c2e3ecb861752d8d2a573c43363ce2b802d2129984"
     },
     {
       "path": "app/tsconfig.json",
@@ -1863,8 +1763,8 @@
     },
     {
       "path": "docs/CLOUDFLARE.md",
-      "bytes": 4661,
-      "sha256": "cc0da39ef16f3df96d462bfb6ff2f8e0ae278d59aee3752fe1ec9a619fa69258"
+      "bytes": 5201,
+      "sha256": "03f0b949c08cb9d5375372534d4ca73a29074ec2cc5e0f38a38df972ecbe71ea"
     },
     {
       "path": "docs/FEATURES.md",
@@ -1883,8 +1783,8 @@
     },
     {
       "path": "docs/VERIFICATION.md",
-      "bytes": 4132,
-      "sha256": "095d13e1a5b769b15023e90cc332dabce49c05d826f1bff156aaf9688aff23e2"
+      "bytes": 5511,
+      "sha256": "575bbe8ed876e82598565413471d9bedfd24561326ebc646398450d60a7381f9"
     },
     {
       "path": "LICENSE.md",
@@ -1893,8 +1793,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4134,
-      "sha256": "bc817cdfbbf928ed7e9ad8985b92b3579aa628eb2e95af88c998285478839479"
+      "bytes": 4175,
+      "sha256": "4f8d6401d0c19b0d851264627782d8c14233ec626a0d985057aea92006f6a1c9"
     },
     {
       "path": "REQUEST.md",
@@ -1928,8 +1828,8 @@
     },
     {
       "path": "scripts/export_source.py",
-      "bytes": 3521,
-      "sha256": "1a9a055a89f9469d28c656f81846876257314ba6af281ed2e11002eb018ec403"
+      "bytes": 3507,
+      "sha256": "0f2a785e1bd69c7bcf9c002964d62e5a6d030e01a12caffa1ac2df0e7a34c3c8"
     },
     {
       "path": "scripts/install_runtime.py",
@@ -2003,13 +1903,13 @@
     },
     {
       "path": "scripts/share_cloudflare.py",
-      "bytes": 6447,
-      "sha256": "f7bb2ae7370ec9227da0c64c417467d80e7ee900132f645b90e594a816c6730e"
+      "bytes": 7684,
+      "sha256": "7751d05e16757444c642c09ec51635ae5ed7ac530fee2f07d3fb864cf03df999"
     },
     {
       "path": "scripts/share_gateway.py",
-      "bytes": 9860,
-      "sha256": "9651496ca5a1a379dea9ef045c7d1ad2b3d24b85ab8562d628fce446b3a80c68"
+      "bytes": 5963,
+      "sha256": "51698ad77e087ff04b5f94aeed2c4f0a8c5cd6573d41e7fc8f6e43202f93f7ce"
     },
     {
       "path": "scripts/start_pdf_tools.py",
@@ -2058,8 +1958,8 @@
     },
     {
       "path": "scripts/test_pdf_share.py",
-      "bytes": 4511,
-      "sha256": "26f2f9010b60d1f2972dfa47eed51f61b473e3eaa6766d7f7f78b53ec8bcdd1f"
+      "bytes": 4160,
+      "sha256": "912303f3984f30a07fcc1b181df0513b4189096d946a9cacc33788cbe819d85d"
     },
     {
       "path": "scripts/test_runtime_config.py",
@@ -2073,8 +1973,8 @@
     },
     {
       "path": "scripts/verify_share.py",
-      "bytes": 3363,
-      "sha256": "b9393ca69df0dfe3dd163420542904e21bad94b44846ccddda7d87b5fbc0c431"
+      "bytes": 3314,
+      "sha256": "c4e6eb7a40cc36ee006cba4b2eb3d01c1a1c17c5da11d52239b5310b3cac0078"
     },
     {
       "path": "setup.cmd",
@@ -2112,6 +2012,6 @@
       "sha256": "50f3a4a8a6dff95a0443c035489dc380e46dca1b70be45dce5d321ad5b11f7db"
     }
   ],
-  "count": 422,
-  "bytes": 87197366
+  "count": 402,
+  "bytes": 87185763
 }

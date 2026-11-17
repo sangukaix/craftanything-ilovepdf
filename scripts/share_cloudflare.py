@@ -1,10 +1,9 @@
-"""Manage only this project's password-protected Cloudflare Quick Tunnel."""
+"""Manage only this project's public Cloudflare Quick Tunnel."""
 import argparse
 import hashlib
 import json
 import os
 import re
-import secrets
 import shutil
 import socket
 import subprocess
@@ -37,7 +36,14 @@ def ensure_binary():
  if digest!=MANIFEST['assets']['cloudflared']['sha256']:raise RuntimeError('Cloudflared checksum mismatch. Nothing was executed.')
  return target
 
-def serve():
+def tunnel_process(state):
+ process=psutil.Process(state['tunnelPid'])
+ if Path(process.exe()).resolve()!=(ROOT/'tools/cloudflared/cloudflared.exe').resolve():raise RuntimeError('Tunnel executable ownership mismatch.')
+ if 'http://127.0.0.1:8770' not in process.cmdline():raise RuntimeError('Unexpected tunnel destination.')
+ if state.get('tunnelCreated') and abs(process.create_time()-state['tunnelCreated'])>.1:raise RuntimeError('Tunnel process identity changed.')
+ return process
+
+def serve(resume=False):
  from share_gateway import ShareServer,ACCOUNT_ORIGIN
  from account_store import AccountStore
  from account_service import create_server
@@ -64,41 +70,53 @@ def serve():
   else:raise RuntimeError('Document service did not start.')
  account=create_server(AccountStore(LOCAL/'accounts'),address=('127.0.0.1',0),origin=ACCOUNT_ORIGIN)
  threading.Thread(target=account.serve_forever,daemon=True).start()
- password=secrets.token_hex(8)
- gateway=ShareServer(ROOT/'app/out',password,account.server_port)
+ gateway=ShareServer(ROOT/'app/out',account.server_port)
  threading.Thread(target=gateway.serve_forever,daemon=True).start()
  binary=ensure_binary();config=LOCAL/'tunnel.yml';config.write_text('{}\n',encoding='utf-8')
  log_path=LOCAL/'cloudflare.log'
- with log_path.open('wb') as output:
-  tunnel=subprocess.Popen([str(binary),'--no-autoupdate','tunnel','--config',str(config),'--protocol','http2','--url','http://127.0.0.1:8770'],cwd=ROOT,stdin=subprocess.DEVNULL,stdout=output,stderr=output,creationflags=subprocess.CREATE_NO_WINDOW)
+ if resume:
+  previous=json.loads(STATE.read_text(encoding='utf-8'));tunnel=tunnel_process(previous)
+ else:
+  with log_path.open('wb') as output:
+   tunnel=subprocess.Popen([str(binary),'--no-autoupdate','tunnel','--config',str(config),'--protocol','http2','--url','http://127.0.0.1:8770'],cwd=ROOT,stdin=subprocess.DEVNULL,stdout=output,stderr=output,creationflags=subprocess.CREATE_NO_WINDOW)
+ def alive():return tunnel.is_running() if isinstance(tunnel,psutil.Process) else tunnel.poll() is None
  try:
-  deadline=time.monotonic()+90;url=None
+  deadline=time.monotonic()+90;url=previous['url'] if resume else None
   while time.monotonic()<deadline:
-   if tunnel.poll() is not None:raise RuntimeError('Cloudflared exited; see .local-data/share/cloudflare.log')
+   if not alive():raise RuntimeError('Cloudflared exited; see .local-data/share/cloudflare.log')
    match=re.search(r'https://[a-z0-9-]+\.trycloudflare\.com',log_path.read_text(encoding='utf-8',errors='replace'))
    if match:url=match.group(0);break
    time.sleep(.25)
   if not url:raise RuntimeError('Could not get a tunnel URL within90seconds.')
   gateway.public_origin=url
-  state={'pid':os.getpid(),'created':psutil.Process().create_time(),'runId':gateway.run_id,'url':url,'password':password,'tunnelPid':tunnel.pid}
+  state={'pid':os.getpid(),'created':psutil.Process().create_time(),'runId':gateway.run_id,'url':url,'public':True,'tunnelPid':tunnel.pid,'tunnelCreated':psutil.Process(tunnel.pid).create_time()}
   temporary=STATE.with_suffix('.tmp');temporary.write_text(json.dumps(state,indent=2)+'\n',encoding='utf-8');temporary.replace(STATE)
-  (LOCAL/'access.txt').write_text('URL: '+url+'\nShare password: '+password+'\nPC and tunnel must remain running. Restart creates a new URL/password.\n',encoding='utf-8')
-  while tunnel.poll() is None:time.sleep(1)
+  (LOCAL/'access.txt').write_text('URL: '+url+'\nNo share password required. Keep this PC running. Restart creates a new URL.\n',encoding='utf-8')
+  while alive():time.sleep(1)
  finally:
-  if tunnel.poll() is None:tunnel.terminate()
+  if alive():tunnel.terminate()
   gateway.shutdown();account.shutdown()
 
-def show(state):print('URL: '+state['url']+'\n공유 암호: '+state['password']+'\nPC를 켜 둔 동안 사용할 수 있습니다. 종료: stop-cloudflare-share.cmd',flush=True)
+def show(state):print('URL: '+state['url']+'\n공유 암호 없이 프로젝트가 열립니다. PC를 켜 두세요. 종료: stop-cloudflare-share.cmd',flush=True)
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('action',choices=['start','stop','status','serve'],default='start',nargs='?');args=parser.parse_args()
- if args.action=='serve':serve();return
+ parser=argparse.ArgumentParser();parser.add_argument('action',choices=['start','stop','status','serve','reload'],default='start',nargs='?');parser.add_argument('--resume',action='store_true');args=parser.parse_args()
+ if args.action=='serve':serve(args.resume);return
  state=status()
+ resume=False
+ if args.action=='reload' and state:
+  # Replace only this verified web process. Keep its existing Cloudflare URL alive.
+  tunnel=tunnel_process(state);state['tunnelCreated']=tunnel.create_time()
+  STATE.write_text(json.dumps(state,indent=2),encoding='utf-8')
+  process=psutil.Process(state['pid']);process.terminate();process.wait(timeout=8)
+  state=None;resume=True
  if args.action=='status':
   if state:show(state)
   else:print('현재 실행 중인 공유가 없습니다.');raise SystemExit(1)
  elif args.action=='stop':
   if not state:print('현재 실행 중인 공유가 없습니다.');return
   process=psutil.Process(state['pid']);children=process.children(recursive=True)
+  tunnel=tunnel_process(state)
+  if tunnel.pid not in {p.pid for p in children}:children.append(tunnel)
   for child in children:
    if not Path(child.exe()).resolve().is_relative_to(ROOT/'tools/cloudflared'):raise RuntimeError('Unexpected child process; nothing was stopped.')
   for child in children:child.terminate()
@@ -107,7 +125,7 @@ def main():
   if state:show(state);return
   LOCAL.mkdir(parents=True,exist_ok=True)
   with (LOCAL/'launcher.log').open('ab') as output:
-   process=subprocess.Popen([sys.executable,str(Path(__file__).resolve()),'serve'],cwd=ROOT,stdin=subprocess.DEVNULL,stdout=output,stderr=output,creationflags=subprocess.CREATE_NO_WINDOW)
+   process=subprocess.Popen([sys.executable,str(Path(__file__).resolve()),'serve',*(['--resume'] if resume else [])],cwd=ROOT,stdin=subprocess.DEVNULL,stdout=output,stderr=output,creationflags=subprocess.CREATE_NO_WINDOW)
   deadline=time.monotonic()+110
   while time.monotonic()<deadline:
    state=status()
