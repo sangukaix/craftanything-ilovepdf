@@ -7,12 +7,12 @@ import shutil
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-ROOT_FILES=['README.md','REQUEST.md','CODEX_SETUP_REQUEST.md','THIRD_PARTY_NOTICES.md','LICENSE.md','AGENTS.md','.gitignore','.gitattributes','dependencies.lock.json','requirements.txt','setup.cmd','verify.cmd','start-local-pdf.cmd','start-pdf-service.cmd']
+ROOT_FILES=['README.md','REQUEST.md','CODEX_SETUP_REQUEST.md','THIRD_PARTY_NOTICES.md','LICENSE.md','AGENTS.md','.gitignore','.gitattributes','dependencies.lock.json','requirements.txt','setup.cmd','verify.cmd','start-local-pdf.cmd','start-pdf-service.cmd','start-cloudflare-share.cmd','stop-cloudflare-share.cmd']
 APP_FILES=['AGENTS.md','package.json','package-lock.json','tsconfig.json','next-env.d.ts','next.config.mjs','postcss.config.mjs']
 SCRIPTS=['account_service.py','account_store.py','audit_pdf_tools.py','pdf_advanced.py','pdf_columns.py','pdf_extra.py','pdf_layout.py','pdf_service.py','pdf_web.py','pdf_workflows.py','start_pdf_tools.py','runtime_config.py','doctor.py','install_runtime.py','verify_install.py','export_source.py','run_checks.py','setup.ps1','start_strata.ps1','python-requirements.in','python-requirements.lock','pdf-service-requirements.txt','test_pdf_client.cjs']
 
 def candidates():
- paths=[ROOT/x for x in ROOT_FILES]+[ROOT/'app'/x for x in APP_FILES]+[ROOT/'scripts'/x for x in SCRIPTS]
+ paths=[ROOT/x for x in ROOT_FILES]+[ROOT/'app'/x for x in APP_FILES]+[ROOT/'scripts'/x for x in SCRIPTS+['share_gateway.py','share_cloudflare.py','verify_share.py']]
  paths+=list((ROOT/'scripts').glob('test_*.py'))
  paths+=list((ROOT/'docs').glob('*.md'))
  paths.append(ROOT/'docs/install-verification.json')

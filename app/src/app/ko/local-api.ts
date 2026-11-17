@@ -1,8 +1,9 @@
+import {serviceAddress} from "./service-address";
 export async function postDocument(operation:string,file:File,extra:Record<string,unknown>={},timeoutMs=600000){
  const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),timeoutMs);
  try{
   const encoded=await new Promise<string>((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(String(reader.result).split(",")[1]);reader.onerror=()=>reject(new Error("파일을 읽지 못했습니다."));reader.readAsDataURL(file);});
-  const response=await fetch(`http://127.0.0.1:8767/api/pdf/${operation}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pdf:encoded,...extra}),signal:controller.signal,cache:"no-store"});
+  const response=await fetch(`${serviceAddress("pdf")}/api/pdf/${operation}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({pdf:encoded,...extra}),signal:controller.signal,cache:"no-store"});
   if(!response.ok){const error=await response.json();throw new Error(error.error||"처리에 실패했습니다.");}
   return response;
  }catch(error){

@@ -46,6 +46,8 @@ app/src/app에 웹 전체 소스, app/public에 글꼴·한국어/영어 OCR·PD
 
 ## 로컬 실행과 외부 서비스
 
+선생님께 설치 없이 링크를 공유하려면 설치·빌드 후 `start-cloudflare-share.cmd`를 실행하세요. HTTPS 주소와 공유 암호가 표시됩니다. [Cloudflare 공유 안내](docs/CLOUDFLARE.md)에 시작·종료·파일 처리 위치와 임시 링크 제한을 적었습니다.
+
 웹 8766, PDF API 8767, 계정 API 8768은 127.0.0.1에서만 열립니다. 로그인·저장소와 결제 화면은 로컬/시험 모드입니다. 외부 클라우드·실제 결제·이메일 인증은 연결되어 있지 않습니다. 인터넷 공개는 별도 HTTPS 배포와 접근 제어가 필요합니다.
 
 개발 시 app 폴더에서 설치된 Node의 npm.cmd run dev 또는 npm.cmd run build를 사용하세요. Python 변경 후 관련 테스트와 verify.cmd를 실행하세요. 현재 기능을 원본 서비스 전체와 98~99% 동일하다고 해석하면 안 됩니다.

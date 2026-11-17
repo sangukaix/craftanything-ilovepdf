@@ -14,6 +14,12 @@ function button(label){return [...document.querySelectorAll('button')].find(b=>b
 async function click(label){const target=button(label);assert(target,label);await act(async()=>{target.click();await Promise.resolve();});}
 async function unmount(){await act(async()=>root.unmount());}
 (async()=>{
+ const {serviceAddress}=require(path.join(app,'src/app/ko/service-address.ts'));
+ assert.strictEqual(serviceAddress('pdf'),'http://127.0.0.1:8767');assert.strictEqual(serviceAddress('account'),'http://127.0.0.1:8768');
+ dom.reconfigure({url:'https://share.example.invalid/ko/pdf_to_word/'});assert.strictEqual(serviceAddress('pdf'),'/pdf-api');assert.strictEqual(serviceAddress('account'),'/account-api');
+ dom.reconfigure({url:'http://127.0.0.1:8770/'});assert.strictEqual(serviceAddress('pdf'),'/pdf-api');
+ dom.reconfigure({url:'http://127.0.0.1:8766/'});
+ console.log('PASS service addresses: local preview stays local; shared HTTPS and gateway never target the visitor PC');
  assert.deepStrictEqual(pagesToRemove('2,4-5,2',6),[4,3,1]);
  for(const range of ['','0','7','4-2','1-6','bad'])assert.throws(()=>pagesToRemove(range,6));
  console.log('PASS page deletion: ranges, duplicates, descending order, bounds, retain at least one page');
